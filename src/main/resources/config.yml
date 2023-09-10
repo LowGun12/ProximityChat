@@ -1,0 +1,5 @@
+prox-range: 20 # Prox chat distance
+megaphone-range: 30 # Megaphone block distance
+
+show-distance: true # Shows message distance
+allow-global-chat: true # Allows global chat

@@ -1,0 +1,27 @@
+name: ProximityChat
+version: '${project.version}'
+main: me.logan.proximitychat.ProximityChat
+api-version: 1.20
+authors: [ Logan ]
+description: Proximity chat for minecraft
+commands:
+  setmegaphonerange:
+    aliases:
+      - setmgpr
+      - smpr
+    permission: proximitychat.setmegaphonerange
+  allowglobalchat:
+    aliases:
+      - agc
+    permission: proximitychat.toggleglobalchat
+  gc:
+    aliases:
+      - global
+      - globalchat
+  gmp:
+    aliases:
+      - gmp
+      - givemp
+      - givemegaphone
+    permission: proximitychat.megaphone
+

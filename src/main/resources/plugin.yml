@@ -5,14 +5,23 @@ api-version: 1.20
 authors: [ Logan ]
 description: Proximity chat for minecraft
 commands:
+  setproximityrange:
+    aliases:
+      - spr
+    permission: proximitychat.setproximityrange
+  toggleshowdistance:
+    aliases:
+      - togglesd
+      - tsd
+    permission: proximitychat.toggledistance
   setmegaphonerange:
     aliases:
       - setmgpr
       - smpr
     permission: proximitychat.setmegaphonerange
-  allowglobalchat:
+  toggleglobalchat:
     aliases:
-      - agc
+      - tgc
     permission: proximitychat.toggleglobalchat
   gc:
     aliases:

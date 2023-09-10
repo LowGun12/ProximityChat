@@ -15,7 +15,7 @@ public class ConfigManager {
     }
 
     public int getTalkRange() {
-        return this.configuration.getInt("talk-range");
+        return this.configuration.getInt("proximity-range");
     }
 
     public int getMegaphoneRange() {

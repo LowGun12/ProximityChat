@@ -5,13 +5,17 @@ import me.logan.proximitychat.utils.ColorUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-public class AllowGlobalChatCommand implements CommandExecutor {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ToggleGlobalChatCommand implements CommandExecutor, TabCompleter {
 
     private ProximityChat plugin;
 
-    public AllowGlobalChatCommand(ProximityChat plugin) {
+    public ToggleGlobalChatCommand(ProximityChat plugin) {
         this.plugin = plugin;
     }
 
@@ -23,7 +27,7 @@ public class AllowGlobalChatCommand implements CommandExecutor {
             if (player.hasPermission("proximitychat.toggleglobalchat")) {
 
                 if (args.length != 1) {
-                    player.sendMessage(ColorUtils.colorize("&cInvalid usage, /allowglobalchat <true/false>"));
+                    player.sendMessage(ColorUtils.colorize("&cInvalid usage, /tgc <true/false>"));
                 } else {
                     String state = args[0].toLowerCase();
 
@@ -46,5 +50,23 @@ public class AllowGlobalChatCommand implements CommandExecutor {
             }
         }
         return true;
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        List<String> completions = new ArrayList<>();
+
+        if (args.length == 1) {
+            String currentArg = args[0].toLowerCase();
+
+            if ("true".startsWith(currentArg)) {
+                completions.add("true");
+            }
+            if ("false".startsWith(currentArg)) {
+                completions.add("false");
+            }
+        }
+
+        return completions;
     }
 }

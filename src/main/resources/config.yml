@@ -1,4 +1,4 @@
-prox-range: 20 # Prox chat distance
+proximity-range: 20 # Proximity chat distance
 megaphone-range: 30 # Megaphone block distance
 
 show-distance: true # Shows message distance

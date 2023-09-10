@@ -3,7 +3,9 @@ package me.logan.proximitychat;
 import me.logan.proximitychat.Events.AsyncPlayerChat;
 import me.logan.proximitychat.commands.GiveMegaphoneCommand;
 import me.logan.proximitychat.commands.GlobalChatCommand;
-import me.logan.proximitychat.commands.configcmds.AllowGlobalChatCommand;
+import me.logan.proximitychat.commands.configcmds.ProximityRangeCommand;
+import me.logan.proximitychat.commands.configcmds.ToggleGlobalChatCommand;
+import me.logan.proximitychat.commands.configcmds.ToggleShowDistanceCommand;
 import me.logan.proximitychat.commands.configcmds.MegaphoneRangeCommand;
 import me.logan.proximitychat.manager.ConfigManager;
 import me.logan.proximitychat.utils.ColorUtils;
@@ -24,11 +26,23 @@ public final class ProximityChat extends JavaPlugin {
     @Override
     public void onEnable() {
         configManager = new ConfigManager(this);
+
         Bukkit.getPluginManager().registerEvents(new AsyncPlayerChat(this), this);
+
         Objects.requireNonNull(getCommand("gmp")).setExecutor(new GiveMegaphoneCommand(getMegaphone()));
         Objects.requireNonNull(getCommand("gc")).setExecutor(new GlobalChatCommand(getConfigManager()));
-        getCommand("allowglobalchat").setExecutor(new AllowGlobalChatCommand(this));
+
+        getCommand("toggleglobalchat").setExecutor(new ToggleGlobalChatCommand(this));
+        getCommand("toggleglobalchat").setTabCompleter(new ToggleGlobalChatCommand(this));
+
         getCommand("setmegaphonerange").setExecutor(new MegaphoneRangeCommand(this));
+        getCommand("setmegaphonerange").setTabCompleter(new MegaphoneRangeCommand(this));
+
+        getCommand("toggleshowdistance").setExecutor(new ToggleShowDistanceCommand(this));
+        getCommand("toggleshowdistance").setTabCompleter(new ToggleShowDistanceCommand(this));
+
+        getCommand("setproximityrange").setExecutor(new ProximityRangeCommand(this));
+        getCommand("setproximityrange").setTabCompleter(new ProximityRangeCommand(this));
     }
 
     @Override
